@@ -1,0 +1,13 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace MvcCrudOperations.Controllers
+{
+    public class PostController : Controller
+    {
+        // GET
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+}

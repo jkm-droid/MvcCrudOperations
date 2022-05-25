@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Shared.DataTransferObjects.CategoryDto>
+@{
+    ViewData["Title"] = "Category | List";
+}
+
+<h4>Available a Categories</h4>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.Title</td>
+            <td>@category.Author</td>
+            <td>Edit</td>
+        </tr>
+    }
+    </tbody>
+</table>

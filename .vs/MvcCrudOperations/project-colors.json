@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0f737b51-5b53-4990-ac38-6280ba388f6e": {
+      "ProjectGuid": "0f737b51-5b53-4990-ac38-6280ba388f6e",
+      "DisplayName": "MvcCrudOperations",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "18ea0a93-95a6-4197-a713-ad6c956b5f76": {
+      "ProjectGuid": "18ea0a93-95a6-4197-a713-ad6c956b5f76",
+      "DisplayName": "Infrastructure",
+      "ColorIndex": 1
+    },
+    "c8a00a37-7d85-4aa4-92d5-6b1143151028": {
+      "ProjectGuid": "c8a00a37-7d85-4aa4-92d5-6b1143151028",
+      "DisplayName": "Domain",
+      "ColorIndex": 2
+    },
+    "28c36bf9-fa84-403c-8ada-f8bacb2718f4": {
+      "ProjectGuid": "28c36bf9-fa84-403c-8ada-f8bacb2718f4",
+      "DisplayName": "Application",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
