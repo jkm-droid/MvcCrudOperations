@@ -12,6 +12,7 @@ namespace MvcCrudOperations.MappingProfile
         {
             CreateMap<Category, CategoryResponse>();
             CreateMap<PostCreationRequest,Post>();
+            CreateMap<Post, PostResponse>();
         }
     }
 }

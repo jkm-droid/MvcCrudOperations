@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Boundary.Responses.CategoryResponse>
+﻿@model Infrastructure.Shared.Wrapper.Result<IList<Domain.Boundary.Responses.CategoryResponse>>
 @{
     ViewData["Title"] = "Category | List";
 }
@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var category in Model)
+    @foreach (var category in Model.Data)
     {
         <tr>
             <td>@category.Title</td>

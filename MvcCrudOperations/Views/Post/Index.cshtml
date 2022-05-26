@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Entities.Post>
+﻿@model Infrastructure.Shared.Wrapper.Result<IList<Domain.Boundary.Responses.PostResponse>>
 @{
     ViewData["Title"] = "Post | List";
 }
@@ -15,15 +15,14 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var post in Model)
+    @foreach (var post in Model.Data)
     {
         <tr>
             <td>@post.Title</td>
             <td>@post.Author</td>
-            <td>@post.PostCategories</td>
             <td>
-                <a>edit</a>
-                <a>view</a>
+                <a asp-action="Edit" asp-controller="Post" asp-route-postId="@post.PostId">edit</a>|
+                <a asp-action="Edit" asp-controller="Post" asp-route-postId="@post.PostId">view</a>|
                 <a>delete</a>
             </td>
         </tr>

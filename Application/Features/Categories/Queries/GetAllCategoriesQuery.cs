@@ -5,12 +5,13 @@ using AutoMapper;
 using Domain.Boundary.Responses;
 using Domain.Entities;
 using Infrastructure.Abstractions;
+using Infrastructure.Shared.Wrapper;
 using MediatR;
 using Shared.DataTransferObjects;
 
 namespace Application.Features.Categories.Queries
 {
-    public class GetAllCategoriesQuery : IRequest<IEnumerable<CategoryResponse>>
+    public class GetAllCategoriesQuery : IRequest<Result<IList<CategoryResponse>>>
     {
         public GetAllCategoriesQuery()
         {
@@ -19,7 +20,7 @@ namespace Application.Features.Categories.Queries
     }
 
     internal sealed class
-        GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuery, IEnumerable<CategoryResponse>>
+        GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuery, Result<IList<CategoryResponse>>>
     {
         private readonly IMapper _mapper;
         private readonly IRepositoryManager _repository;
@@ -30,12 +31,12 @@ namespace Application.Features.Categories.Queries
             _repository = repository;
         }
 
-        public async Task<IEnumerable<CategoryResponse>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<Result<IList<CategoryResponse>>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
             var categories = await _repository.Category.GetAllCategories(trackChanges: false);
-            var categoryResponse = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
+            var categoryResponse = _mapper.Map<IList<CategoryResponse>>(categories);
 
-            return categoryResponse;
+            return await Result<IList<CategoryResponse>>.SuccessAsync(categoryResponse, "Success");
         }
     }
 }

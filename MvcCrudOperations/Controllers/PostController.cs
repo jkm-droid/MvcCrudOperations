@@ -33,12 +33,11 @@ namespace MvcCrudOperations.Controllers
         [HttpGet("create-post")]
         public async Task<IActionResult> Create()
         {
-
             //get all categories
             var categories = await _mediator.Send(new GetAllCategoriesQuery());
             var model = new CategorySelectionViewModel();
             
-            foreach (var category in categories)
+            foreach (var category in categories.Data)
             {
                 var editorViewModel = new SelectCategoryEditorViewModel()
                 {
@@ -72,18 +71,48 @@ namespace MvcCrudOperations.Controllers
             
             return RedirectToAction("Index");
         }
-        
-        private async Task<List<SelectListItem>> PreparePostCreationView()
-        {
-            var categories = await _mediator.Send(new GetAllCategoriesQuery());
-            //create a list to populate the Category drop down
-            var list = categories.Select(category => new SelectListItem
-            {
-                Text = category.Title,
-                Value = category.CategoryId.ToString()
-            }).ToList();
 
-            return list;
+        [HttpGet("{postId}/edit-post")]
+        public async Task<IActionResult> Edit(Guid postId)
+        {
+            //get the role
+            var post = await _mediator.Send(new GetPostByIdQuery(postId, withCategories: true));
+            var categoryIds = post.PostCategories.Select(c => c.CategoryId).Distinct().ToList();
+            
+            //get all categories
+            var categories = await _mediator.Send(new GetAllCategoriesQuery());
+            var model = new CategorySelectionViewModel();
+            
+            foreach (var category in categories.Data)
+            {
+                var editorViewModel = new SelectCategoryEditorViewModel()
+                {
+                    CategoryId = category.CategoryId,
+                    Title = category.Title,
+                    Selected = categoryIds.Contains(category.CategoryId)
+                };
+                model.Categories.Add(editorViewModel);
+            }
+
+            var postUpdateModel = new PostUpdateRequest()
+            {
+                Title = post.Title,
+                Author = post.Author,
+                Content = post.Content,
+                CategorySelectionViewModel = model
+            };
+            
+            return View(postUpdateModel);
         }
+        
+        [HttpPost("{postId}/edit-post")]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Guid postId, PostUpdateRequest postUpdateRequest)
+        {
+            postUpdateRequest.Categories = postUpdateRequest.CategorySelectionViewModel.GetSelectedIds();
+            var response = 
+            return RedirectToAction("Index");
+        }
+        
     }
 }

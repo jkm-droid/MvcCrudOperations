@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Entities;
@@ -22,6 +23,17 @@ namespace Infrastructure.Implementations
         public void CreatePost(Post post)
         {
             Create(post);
+        }
+        
+        public async Task<Post> GetPostById(Guid postId, bool trackChanges)
+        {
+            return await FindByCondition(p => p.PostId.Equals(postId), trackChanges).SingleOrDefaultAsync();
+        } 
+        
+        public async Task<Post> GetAllPostCategories(Guid postId, bool trackChanges)
+        {
+            return await FindByCondition(pc => pc.PostId == postId, trackChanges).Include(pc => pc.PostCategories)
+                .SingleOrDefaultAsync();
         }
     }
 }
