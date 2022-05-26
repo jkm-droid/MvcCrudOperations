@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <Folder Include="Abstractions" />
-      <Folder Include="Features\Category\Commands" />
+      <Folder Include="Features\Categories\Commands" />
       <Folder Include="Implementations" />
     </ItemGroup>
 
@@ -19,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Infrastructure.Shared\Infrastructure.Shared.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
       <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
       <ProjectReference Include="..\Shared\Shared.csproj" />

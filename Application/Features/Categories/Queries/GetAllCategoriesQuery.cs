@@ -2,13 +2,15 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Domain.Boundary.Responses;
+using Domain.Entities;
 using Infrastructure.Abstractions;
 using MediatR;
 using Shared.DataTransferObjects;
 
-namespace Application.Features.Category.Queries
+namespace Application.Features.Categories.Queries
 {
-    public class GetAllCategoriesQuery : IRequest<IEnumerable<CategoryDto>>
+    public class GetAllCategoriesQuery : IRequest<IEnumerable<CategoryResponse>>
     {
         public GetAllCategoriesQuery()
         {
@@ -17,7 +19,7 @@ namespace Application.Features.Category.Queries
     }
 
     internal sealed class
-        GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuery, IEnumerable<CategoryDto>>
+        GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuery, IEnumerable<CategoryResponse>>
     {
         private readonly IMapper _mapper;
         private readonly IRepositoryManager _repository;
@@ -28,12 +30,12 @@ namespace Application.Features.Category.Queries
             _repository = repository;
         }
 
-        public async Task<IEnumerable<CategoryDto>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<CategoryResponse>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
             var categories = await _repository.Category.GetAllCategories(trackChanges: false);
-            var categoryDto = _mapper.Map<IEnumerable<CategoryDto>>(categories);
+            var categoryResponse = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
 
-            return categoryDto;
+            return categoryResponse;
         }
     }
 }

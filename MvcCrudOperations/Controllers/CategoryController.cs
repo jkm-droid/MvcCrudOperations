@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Application.Features.Category.Queries;
+using Application.Features.Categories.Queries;
 using LoggerService.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

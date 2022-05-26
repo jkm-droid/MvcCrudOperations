@@ -1,35 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Domain.Entities.Post>
+@{
+    ViewData["Title"] = "Post | List";
 }
 
-<h4>Create a Post</h4>
-
-<form>
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <input type="text" class="form-control" placeholder="Enter post title">
-    </div>
-        
-    <div class="mb-3">
-        <label aps-for="Author" class="form-label">Author</label>
-        <input type="text" class="form-control"  placeholder="Enter post author">
-    </div>
-        
-    <div class="mb-3">
-        <label aps-for="Content" class="form-label">Post Content</label>
-        <textarea class="form-control"  rows="3"></textarea>
-    </div>
-        
-    <div class="mb-3">
-        <label aps-for="Category" class="form-label">Category</label>
-        <input type="text" class="form-control" placeholder="Enter post title">
-    </div>
-        
-    <div class="mb-3">
-        <label aps-for="Category" class="form-label">Tags</label>
-        <input type="text" class="form-control" placeholder="Enter post tags">
-    </div>
-        
-    <input type="submit" name="Save">
-
-</form>
+<h4>Available a Posts</h4>
+<a asp-controller="Post" asp-action="Create">Create New Post</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Categories</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var post in Model)
+    {
+        <tr>
+            <td>@post.Title</td>
+            <td>@post.Author</td>
+            <td>@post.PostCategories</td>
+            <td>
+                <a>edit</a>
+                <a>view</a>
+                <a>delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

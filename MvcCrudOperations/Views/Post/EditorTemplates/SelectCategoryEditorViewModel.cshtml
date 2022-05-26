@@ -1,0 +1,7 @@
+@model Domain.ViewModels.SelectCategoryEditorViewModel
+
+    @Html.CheckBoxFor(model => model.Selected)
+ 
+    @Html.DisplayFor(model => model.Title)
+
+    @Html.HiddenFor(model => model.CategoryId)

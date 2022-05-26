@@ -659,6 +659,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Domain": "1.0.0",
           "Infrastructure": "1.0.0",
+          "Infrastructure.Shared": "1.0.0",
           "LoggerService": "1.0.0",
           "MediatR": "10.0.1",
           "Shared": "1.0.0"
@@ -682,6 +683,11 @@
         },
         "runtime": {
           "Infrastructure.dll": {}
+        }
+      },
+      "Infrastructure.Shared/1.0.0": {
+        "runtime": {
+          "Infrastructure.Shared.dll": {}
         }
       },
       "LoggerService/1.0.0": {
@@ -1164,6 +1170,11 @@
       "sha512": ""
     },
     "Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infrastructure.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

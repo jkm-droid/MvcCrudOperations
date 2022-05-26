@@ -681,6 +681,16 @@
           "bin/placeholder/Infrastructure.dll": {}
         }
       },
+      "Infrastructure.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Infrastructure.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.Shared.dll": {}
+        }
+      },
       "LoggerService/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1957,6 +1967,11 @@
       "path": "../Infrastructure/Infrastructure.csproj",
       "msbuildProject": "../Infrastructure/Infrastructure.csproj"
     },
+    "Infrastructure.Shared/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure.Shared/Infrastructure.Shared.csproj",
+      "msbuildProject": "../Infrastructure.Shared/Infrastructure.Shared.csproj"
+    },
     "LoggerService/1.0.0": {
       "type": "project",
       "path": "../LoggerService/LoggerService.csproj",
@@ -1973,6 +1988,7 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 11.0.0",
       "Domain >= 1.0.0",
       "Infrastructure >= 1.0.0",
+      "Infrastructure.Shared >= 1.0.0",
       "LoggerService >= 1.0.0",
       "MediatR >= 10.0.1",
       "Shared >= 1.0.0"
@@ -2007,6 +2023,9 @@
           "projectReferences": {
             "C:\\Net Core\\Test Projects\\MvcCrudOperations\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Net Core\\Test Projects\\MvcCrudOperations\\Domain\\Domain.csproj"
+            },
+            "C:\\Net Core\\Test Projects\\MvcCrudOperations\\Infrastructure.Shared\\Infrastructure.Shared.csproj": {
+              "projectPath": "C:\\Net Core\\Test Projects\\MvcCrudOperations\\Infrastructure.Shared\\Infrastructure.Shared.csproj"
             },
             "C:\\Net Core\\Test Projects\\MvcCrudOperations\\Infrastructure\\Infrastructure.csproj": {
               "projectPath": "C:\\Net Core\\Test Projects\\MvcCrudOperations\\Infrastructure\\Infrastructure.csproj"

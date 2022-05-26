@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Domain.Boundary.Requests;
+using Domain.Boundary.Responses;
 using Domain.Entities;
 using Shared.DataTransferObjects;
 
@@ -8,7 +10,8 @@ namespace MvcCrudOperations.MappingProfile
     {
         public MappingProfile()
         {
-            CreateMap<Category, CategoryDto>();
+            CreateMap<Category, CategoryResponse>();
+            CreateMap<PostCreationRequest,Post>();
         }
     }
 }

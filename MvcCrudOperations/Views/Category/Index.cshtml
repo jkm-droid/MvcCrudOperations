@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Shared.DataTransferObjects.CategoryDto>
+﻿@model IEnumerable<Domain.Boundary.Responses.CategoryResponse>
 @{
     ViewData["Title"] = "Category | List";
 }
 
 <h4>Available a Categories</h4>
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>Title</th>
@@ -18,7 +18,11 @@
         <tr>
             <td>@category.Title</td>
             <td>@category.Author</td>
-            <td>Edit</td>
+            <td>
+                <a>edit</a>
+                <a>view</a>
+                <a>delete</a>
+            </td>
         </tr>
     }
     </tbody>
