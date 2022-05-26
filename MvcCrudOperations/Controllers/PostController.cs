@@ -107,11 +107,17 @@ namespace MvcCrudOperations.Controllers
         
         [HttpPost("{postId}/edit-post")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Guid postId, PostUpdateRequest postUpdateRequest)
+        public async Task<IActionResult> Edit(Guid postId, PostUpdateRequest postUpdateRequest)
         {
             postUpdateRequest.Categories = postUpdateRequest.CategorySelectionViewModel.GetSelectedIds();
-            var response = 
-            return RedirectToAction("Index");
+
+            var response = await _mediator.Send(new UpdatePostCommand(postId, postUpdateRequest, trackChanges: true));
+            if (response.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(postUpdateRequest);
         }
         
     }

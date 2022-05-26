@@ -35,5 +35,6 @@ namespace Infrastructure.Implementations
             return await FindByCondition(pc => pc.PostId == postId, trackChanges).Include(pc => pc.PostCategories)
                 .SingleOrDefaultAsync();
         }
+
     }
 }
